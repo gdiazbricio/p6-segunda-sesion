@@ -5,8 +5,8 @@ import { Arithmeticable } from "./Arithmeticable";
  */
 export class Complex implements Arithmeticable<Complex> {
   constructor(
-    public readonly num1: number = 0,
-    public readonly num2: number = 0
+    public readonly num1: number,
+    public readonly num2: number
   ) {}
 
   /**

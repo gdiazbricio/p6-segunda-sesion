@@ -85,6 +85,13 @@ describe("exercise 1 modificated tests", () => {
     ).to.be.deep.equal(new Rational(1, 1));
   });
 
+  it("rational must add two rational numbers", () => {
+    const myNewRational = new Rational(2, 4);
+    expect(
+      myCollection.getArithmeticable(1)?.add(myNewRational)
+    ).to.be.deep.equal(new Rational(1, 1));
+  });
+
   it("complex must add a complex number and a rational using adapter", () => {
     const myNewRational = new Rational(2, 4);
     const adapter = new Adapter(myNewRational);
@@ -109,12 +116,78 @@ describe("exercise 1 modificated tests", () => {
     ).to.be.deep.equal(new Complex(0.5, 1)); 
   });
 
-  it("complex must divide two complex numbers", () => {
+  it("complex must divide two complex numbers using adapter", () => {
     const myNewRational = new Rational(2, 4);
     const adapter = new Adapter(myNewRational);
     expect(
       adapter.divide(myComplex)
-    ).to.be.deep.equal(new Complex(0.1, -0.2));
+      ).to.be.deep.equal(new Complex(0.1, -0.2));
   });
+  
+  it("complex must add a complex number and a rational with adapter as argument", () => {
+    const myNewRational = new Rational(2, 4);
+    const adapter = new Adapter(myNewRational);
+    expect(
+      myComplex.add(adapter)
+    ).to.be.deep.equal(new Complex(1.5, 2));
+  });
+
+  it("complex must substract a complex number and a rational with adapter as argument", () => {
+      const myNewRational = new Rational(2, 4);
+      const adapter = new Adapter(myNewRational);
+      expect(
+        myComplex.substract(adapter)
+      ).to.be.deep.equal(new Complex(0.5, 2));
+  });
+
+  it("complex must multiply a complex number and a rational with adapter as argument", () => {
+    const myNewRational = new Rational(2, 4);
+    const adapter = new Adapter(myNewRational);
+    expect(
+      myComplex.multiply(adapter)
+    ).to.be.deep.equal(new Complex(0.5, 1)); 
+  });
+
+  it("complex must divide two complex numbers with adapter as argument", () => {
+    const myNewRational = new Rational(2, 4);
+    const adapter = new Adapter(myNewRational);
+    expect(
+      myComplex.divide(adapter)
+    ).to.be.deep.equal(new Complex(2, 4));
+  });
+
+  it("complex must add a complex number and a rational with adapter as argument (2/2 + (1 + 2i) = 2 + 2i)", () => {
+    const myNewRational = new Rational(2, 2);
+    const adapter = new Adapter(myNewRational);
+    expect(
+      myComplex.add(adapter)
+    ).to.be.deep.equal(new Complex(2, 2));
+  });
+
+  it("complex must substract a complex number and a rational with adapter as argument (2/2 - (1 + 2i) = 0 + 2i)", () => {
+      const myNewRational = new Rational(2, 2);
+      const adapter = new Adapter(myNewRational);
+      expect(
+        myComplex.substract(adapter)
+      ).to.be.deep.equal(new Complex(0, 2));
+  });
+
+  it("complex must multiply a complex number and a rational with adapter as argument ((2/2) * (1 + 2i) = 1 + 2i )", () => {
+    const myNewRational = new Rational(2, 2);
+    const adapter = new Adapter(myNewRational);
+    expect(
+      myComplex.multiply(adapter)
+    ).to.be.deep.equal(new Complex(1, 2)); 
+  });
+
+  it("complex must divide two complex numbers with adapter as argument ((2/2) * (1 + 2i) = 1 + 2i )", () => {
+    const myNewRational = new Rational(2, 2);
+    const adapter = new Adapter(myNewRational);
+    expect(
+      myComplex.divide(adapter)
+    ).to.be.deep.equal(new Complex(1, 2));
+  });
+
+
 
 });
